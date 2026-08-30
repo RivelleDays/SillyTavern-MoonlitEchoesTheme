@@ -2349,7 +2349,7 @@ body.ripplestyle {
             opacity: 1;
         }
     }
-    body:has([data-slide-toggle="shown"]) {
+    body.moonlit-slide-toggle-shown {
         #send_form {
             border-radius: 0 !important;
         }

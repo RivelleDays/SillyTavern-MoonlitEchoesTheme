@@ -113,7 +113,7 @@
     --moonlitTopInfoBarPanelHeight: calc(var(--tt-base-viewport-height, var(--doc-height, 100dvh)) - var(--moonlitTopInfoBarTop));
 }
 
-body:has(#extensionTopBar) {
+body.moonlit-has-extension-topbar {
     #sheld {
         padding-top: calc(var(--topBarBlockSize)) !important;
     }
@@ -125,7 +125,7 @@ body:has(#extensionTopBar) {
 
     }
 }
-body.waifuMode:has(#extensionTopBar) {
+body.waifuMode.moonlit-has-extension-topbar {
     #sheld {
         padding-top: 0 !important;
     }
@@ -172,14 +172,14 @@ body.waifuMode:has(#extensionTopBar) {
         border-bottom: 1px solid color-mix(in srgb, var(--SmartThemeBodyColor) 25%, transparent) !important;
     }
 }
-body:has(#extensionConnectionProfiles.visible) #extensionTopBar {
+body.moonlit-connection-profiles-visible #extensionTopBar {
     border-radius: 10px 10px 0 0 !important;
 
     @media screen and (max-width: 1000px) {
         border-radius: 0 !important;
     }
 }
-body.waifuMode:has(#extensionConnectionProfiles.visible) #extensionTopBar {
+body.waifuMode.moonlit-connection-profiles-visible #extensionTopBar {
     border-radius: 10px !important;
 }
 
@@ -544,7 +544,7 @@ body.tidestyle {
     }
 }
 
-body.mes:has(.lacommon--quickActions) {
+body.mes.moonlit-has-lacommon-quick-actions {
     margin-left: 20px;
     align-items: center !important;
 
@@ -787,14 +787,14 @@ body.stcs--nonDiscord .stcs--ctxBlocker > .stcs--ctxMenu {
     }
 }
 @media screen and (max-width: 1000px) {
-    body:has(.stwii--trigger):not(.waifuMode) .typing_indicator {
+    body.moonlit-has-stwii-trigger:not(.waifuMode) .typing_indicator {
         left: 40px;
     }
     body.waifuMode .stwii--trigger {
         bottom: auto;
         top: calc(var(--topBarBlockSize) + 10px);
     }
-    body.waifuMode:has(#extensionTopBar) .stwii--trigger {
+    body.waifuMode.moonlit-has-extension-topbar .stwii--trigger {
         top: calc(var(--topBarBlockSize) + 50px);
     }
     body:not(.waifuMode) {
@@ -829,7 +829,7 @@ body.stcs--nonDiscord .stcs--ctxBlocker > .stcs--ctxMenu {
         top: 80px;
         left: 10px;
     }
-    body:has(#extensionSideBar.visible, #extensionConnectionProfiles.visible) {
+    body.moonlit-extension-panel-visible {
         .stth--trigger {
             top: 110px;
             right: 10px;
@@ -840,7 +840,7 @@ body.stcs--nonDiscord .stcs--ctxBlocker > .stcs--ctxMenu {
 
 /* ChatsPlus 聊天+ */
 
-body:has(#chatsplus-tab-row) {
+body.moonlit-has-chatsplus-tab-row {
     #CharListButtonAndHotSwaps {
         margin-bottom: 0 !important;
     }

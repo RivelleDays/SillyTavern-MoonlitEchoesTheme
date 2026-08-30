@@ -37,12 +37,14 @@ import {
     addModernCompactStyles,
 } from './src/ui/settings-factory.js';
 import { applyAllThemeSettings as applyAllThemeSettingsCore } from './src/core/theme-applier.js';
+import { createMoonlitDomStateController } from './src/core/dom-state.js';
 import { initAvatarInjector, initFormSheldHeightMonitor } from './src/core/observers.js';
 import { addThemeButtonsHint } from './src/services/hints.js';
 import { integrateWithThemeSelector } from './src/services/theme-selector.js';
 
 // Track if custom chat styles have been added
 let customChatStylesAdded = false;
+const moonlitDomState = createMoonlitDomStateController();
 
 export function applyAllThemeSettings(contextOverride) {
     return applyAllThemeSettingsCore(settingsKey, themeCustomSettings, contextOverride);
@@ -416,6 +418,9 @@ export function toggleCss(shouldLoad) {
     const existingLinkExt = document.getElementById('MoonlitEchosTheme-extension');
 
     if (shouldLoad) {
+        // Keep optional companion-extension states out of document-wide CSS :has() selectors.
+        moonlitDomState.start();
+
         // Determine base URL path
         const baseUrl = getBaseUrl();
 
@@ -445,6 +450,9 @@ export function toggleCss(shouldLoad) {
         // Re-apply all checkbox styles if they were enabled
         updateAllCheckboxStyles(true);
     } else {
+        // Remove Moonlit-owned state classes before its styles are unloaded.
+        moonlitDomState.stop();
+
         // Remove CSS
         if (existingLinkStyle) existingLinkStyle.remove();
         if (existingLinkExt) existingLinkExt.remove();

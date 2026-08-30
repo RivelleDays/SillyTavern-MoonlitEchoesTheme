@@ -372,7 +372,6 @@ export const themeCustomSettings = [
             body.ripplestyle #chat .mes .mesAvatarWrapper .avatar,
             body.ripplestyle #chat .mes .mesAvatarWrapper .avatar img,
             #extensionTopBar,
-            body:has(#extensionConnectionProfiles.visible) #extensionTopBar,
             #rm_ch_create_block .avatar img {
                 border-radius: 0 !important;
             }
@@ -860,7 +859,7 @@ export const themeCustomSettings = [
             @media screen and (max-width: 1000px) {
                 #form_sheld {}
 
-                body:has([data-slide-toggle="shown"]) #send_form  {
+                body.moonlit-slide-toggle-shown #send_form  {
                     border-radius: 0 !important;
                 }
 
